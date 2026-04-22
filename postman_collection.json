@@ -1,0 +1,72 @@
+{
+  "info": {
+    "name": "Intern Assignment API",
+    "_postman_id": "f069ec34-5fb8-44cf-b4dd-53ca73cb930f",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "http://localhost:5000/api/v1/auth/register" },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Admin\",\"email\":\"admin@example.com\",\"password\":\"secret123\",\"role\":\"admin\"}"
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "http://localhost:5000/api/v1/auth/login" },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"admin@example.com\",\"password\":\"secret123\"}"
+        }
+      }
+    },
+    {
+      "name": "Get Current User",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "http://localhost:5000/api/v1/auth/me" }
+      }
+    },
+    {
+      "name": "Get Tasks",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "http://localhost:5000/api/v1/tasks?page=1&limit=10&status=todo&search=demo" }
+      }
+    },
+    {
+      "name": "Create Task",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "http://localhost:5000/api/v1/tasks" },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\":\"Assignment task\",\"description\":\"Build backend\",\"status\":\"todo\"}"
+        }
+      }
+    },
+    {
+      "name": "Admin - List Users",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "http://localhost:5000/api/v1/users" }
+      }
+    }
+  ]
+}
